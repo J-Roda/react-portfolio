@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --white: #fafafa;
+  --light: #f8f9fa;
+  --secondary: #6c757d;
+  --dark: #343a40;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 66.73px; /* to check navbar height use developer tools of google */
+}
+
+#body {
+  font-family: "Rubik", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #55535e;
+}
+
+.nav-link {
+  display: inline-block;
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--light);
+  transition: background-color 0.3s ease;
+  padding: 10px 16px !important;
+  border-radius: 10px;
+}
+
+.nav-link:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 0 10px 10px;
+  background-color: #f8f9fa;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-link:hover {
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(108, 117, 125, 0.5);
+  color: var(--light) !important;
+}
+
+.active-link {
+  border-radius: 10px;
+  background-color: rgba(108, 117, 125, 0.5);
+}
+
+.color-change:hover {
+  color: rgba(249, 129, 71, 1);
+  animation: color-rotate 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: alternate !important;
+}
+
+.emoji {
+  animation: skew 2s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes color-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes skew {
+  0% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
