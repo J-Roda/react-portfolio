@@ -20,7 +20,7 @@ export default function About() {
   return (
     <Element
       name="about"
-      className="bg-[#f8f9fa] 2xl:h-screen 2xl:py-0 py-10 flex flex-col items-center justify-center"
+      className="bg-[#f8f9fa] 2xl:h-screen 2xl:py-0 pt-10 pb-20 flex flex-col items-center justify-center"
     >
       <div className="block border-b-2 border-gray-300 2xl:w-1/3 mb-5">
         <h3 className="text-4xl font-bold h-18 text-center">About Me</h3>
@@ -65,8 +65,8 @@ export default function About() {
         </div>
 
         {/* Skills */}
-        <div className="flex flex-col text-center align-center justify-center">
-          <h3 className="font-bold text-lg mb-3">Skills</h3>
+        <div className="text-center">
+          <h3 className="font-bold text-lg mb-3 text-center">Skills</h3>
           <div className="grid grid-cols-2 gap-4 bg-gray-700 p-4 items-center rounded-md">
             {/* Skill buttons */}
             <div className="col-span-2 flex justify-between items-center gap-2 lg:gap-4 flex-wrap">

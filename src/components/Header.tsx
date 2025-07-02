@@ -1,52 +1,83 @@
 import {
   BriefcaseIcon,
+  ChevronDoubleDownIcon,
+  ChevronDoubleUpIcon,
   HomeIcon,
   PhoneIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
 
 import logo from "../assets/update-color.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { classNames } from "../lib/utils.ts";
-import { Link } from "react-scroll";
+import { animateScroll, Link } from "react-scroll";
 
 export default function Header() {
   const [navigation, setNavigation] = useState([
-    { name: "Home", href: "home", current: true },
-    { name: "About Me", href: "about", current: false },
-    { name: "Projects", href: "projects", current: false },
-    { name: "Contact", href: "contact", current: false },
+    {
+      name: "Home",
+      icon: <HomeIcon className="block size-8" />,
+      href: "home",
+      current: true,
+    },
+    {
+      name: "About Me",
+      icon: <UserIcon className="block size-8" />,
+      href: "about",
+      current: false,
+    },
+    {
+      name: "Projects",
+      icon: <BriefcaseIcon className="block size-8" />,
+      href: "projects",
+      current: false,
+    },
+    {
+      name: "Contact",
+      icon: <PhoneIcon className="block size-8" />,
+      href: "contact",
+      current: false,
+    },
   ]);
 
   return (
     <header
       className={`${navigation.map((item) =>
         classNames(item.current ? "bg-transparent" : "bg-gray-800 text-white")
-      )} fixed h-16 z-1 bottom-0 w-screen md:top-0 flex items-center justify-center px-4 sm:px-6 lg:px-8 shadow-md`}
+      )} fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
     >
-      <div className="absolute flex items-center justify-between md:hidden w-sm">
-        {/* Mobile menu button*/}
-        <a href="#home">
-          <HomeIcon className="block size-8 text-amber-50" />
-        </a>
-        <a href="#roles">
-          <UserIcon className="block size-8 text-amber-50" />
-        </a>
-        <a href="#about">
-          {/* Logo */}
-          <img
-            alt="Your Company"
-            src={logo}
-            className="size-15 bg-gray-700 w-auto rounded-sm p-1 hover:bg-gray-600 transition-colors duration-300"
-          />
-        </a>
-        <a href="#projects">
-          <BriefcaseIcon className="block size-8 text-amber-50" />
-        </a>
-        <a href="#contact">
-          <PhoneIcon className="block size-8 text-amber-50" />
-        </a>
-      </div>
+      <button
+        className={`p-2 md:hidden rounded-3xl ${
+          navigation[0].current ? "hidden" : ""
+        }`}
+        onClick={() =>
+          animateScroll.scrollToTop({ duration: 700, smooth: true })
+        }
+      >
+        <ChevronDoubleUpIcon className="inline-block size-8 animate-bounce" />
+      </button>
+      {/* <div className="flex items-center justify-around w-full py-10 md:hidden"> */}
+      {/* Mobile menu button*/}
+      {/* {navigation.map((item) => (
+          <Link
+            to={item.href}
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={700}
+            activeClass="text-white bg-[rgba(108,117,125,0.5)]"
+            className={`nav-link cursor-pointer`}
+            onSetActive={(name) => {
+              setNavigation((prev) =>
+                prev.map((i) => ({ ...i, current: i.href === name }))
+              );
+            }}
+          >
+            {item.icon}
+          </Link>
+        ))} */}
+
+      {/* </div> */}
       <div className="mx-auto md:ml-0 md:mr-auto md:block hidden">
         <a href="#home" className="flex items-center color-change">
           {/* Logo */}
@@ -61,7 +92,7 @@ export default function Header() {
               spy={true}
               smooth={true}
               offset={-70}
-              duration={100}
+              duration={700}
               activeClass="text-white bg-[rgba(108,117,125,0.5)]"
               className="nav-link cursor-pointer"
               onSetActive={(name) => {
