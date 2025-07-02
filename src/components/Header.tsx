@@ -46,6 +46,7 @@ export default function Header() {
         classNames(item.current ? "bg-transparent" : "bg-gray-800 text-white")
       )} fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
     >
+      {/* Mobile button*/}
       <button
         className={`p-2 md:hidden rounded-3xl ${
           navigation[0].current ? "hidden" : ""
@@ -56,28 +57,8 @@ export default function Header() {
       >
         <ChevronDoubleUpIcon className="inline-block size-8 animate-bounce" />
       </button>
-      {/* <div className="flex items-center justify-around w-full py-10 md:hidden"> */}
-      {/* Mobile menu button*/}
-      {/* {navigation.map((item) => (
-          <Link
-            to={item.href}
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={700}
-            activeClass="text-white bg-[rgba(108,117,125,0.5)]"
-            className={`nav-link cursor-pointer`}
-            onSetActive={(name) => {
-              setNavigation((prev) =>
-                prev.map((i) => ({ ...i, current: i.href === name }))
-              );
-            }}
-          >
-            {item.icon}
-          </Link>
-        ))} */}
 
-      {/* </div> */}
+      {/* Desktop menu button*/}
       <div className="mx-auto md:ml-0 md:mr-auto md:block hidden">
         <a href="#home" className="flex items-center color-change">
           {/* Logo */}
