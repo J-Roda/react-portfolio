@@ -20,14 +20,16 @@ export default function About() {
   return (
     <Element
       name="about"
-      className="bg-[#f8f9fa] 2xl:h-screen 2xl:py-0 pt-10 pb-20 flex flex-col items-center justify-center"
+      className="bg-[#f8f9fa] 2xl:h-screen 2xl:py-0 pt-10 pb-20 flex flex-col items-center justify-center overflow-hidden"
     >
       <div className="block border-b-2 border-gray-300 2xl:w-1/3 mb-5">
-        <h3 className="text-4xl font-bold h-18 text-center">About Me</h3>
+        <h3 className="text-4xl font-bold h-18 text-center  hidden-t">
+          About Me
+        </h3>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-4 mx-auto xl:mx-30 2xl:mx-52  mb-5 p-5 shadow-lg bg-[#fafafa] rounded-lg">
-        <div className="p-3">
+      <div className="grid lg:grid-cols-2 gap-4 mx-auto xl:mx-30 2xl:mx-52  mb-5 p-5 shadow-lg bg-[#fafafa] rounded-lg ">
+        <div className="p-3 hidden-l">
           <h3 className="font-bold text-lg mb-3">Career Objectives</h3>
           <p className="text-lg">
             Passionate web developer with more than 2 years of experience in
@@ -65,40 +67,43 @@ export default function About() {
         </div>
 
         {/* Skills */}
-        <div className="text-center">
+        <div className="text-center hidden-r">
           <h3 className="font-bold text-lg mb-3 text-center">Skills</h3>
           <div className="grid grid-cols-2 gap-4 bg-gray-700 p-4 items-center rounded-md">
             {/* Skill buttons */}
             <div className="col-span-2 flex justify-between items-center gap-2 lg:gap-4 flex-wrap">
               <button
-                className={`flex justify-center items-center hover:bg-gray-200 transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${
+                className={`flex justify-center items-center transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${
                   activeSkill === "front-end"
                     ? "bg-gray-400 text-white"
-                    : "bg-[#fafafa] "
+                    : "bg-[#fafafa] cursor-pointer hover:bg-gray-200 "
                 }`}
                 onClick={() => handleSkillClick("front-end")}
+                disabled={activeSkill === "front-end"}
               >
                 <WindowIcon className="w-8 h-8" />
                 <span>FRONT-END</span>
               </button>
               <button
-                className={`flex justify-center items-center text-gray-600  hover:bg-gray-200 transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${
+                className={`flex justify-center items-center text-gray-600 transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${
                   activeSkill === "back-end"
                     ? "bg-gray-400 text-white"
-                    : "bg-[#fafafa]"
+                    : "bg-[#fafafa]  cursor-pointer hover:bg-gray-200 "
                 }`}
                 onClick={() => handleSkillClick("back-end")}
+                disabled={activeSkill === "back-end"}
               >
                 <CircleStackIcon className="w-8 h-8" />
                 <span>BACKEND</span>
               </button>
               <button
-                className={`flex justify-center items-center text-gray-600  hover:bg-gray-200 transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-2 ${
+                className={`flex justify-center items-center text-gray-600  transition-colors duration-300 rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-2 ${
                   activeSkill === "tools"
                     ? "bg-gray-400 text-white"
-                    : "bg-[#fafafa]"
+                    : "bg-[#fafafa] cursor-pointer hover:bg-gray-200 "
                 }`}
                 onClick={() => handleSkillClick("tools")}
+                disabled={activeSkill === "tools"}
               >
                 <CogIcon className="w-8 h-8" />
                 <span>TOOLS</span>
@@ -107,8 +112,8 @@ export default function About() {
 
             {/*skill content - front-end */}
             <div
-              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 ${
-                activeSkill === "front-end" ? "block" : "hidden"
+              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 hidden-skill ${
+                activeSkill === "front-end" ? "" : "hidden"
               }`}
             >
               <img
@@ -158,13 +163,19 @@ export default function About() {
                   alt="Bootstrap Icon"
                   className="h-27 mx-auto"
                 />
+
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+                  alt="Bootstrap Icon"
+                  className="h-27 mx-auto"
+                />
               </div>
             </div>
 
             {/*skill content - backend */}
             <div
-              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-2 col-span-2 gap-5 p-3 justify-center items-center ${
-                activeSkill === "back-end" ? "block" : "hidden"
+              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-2 col-span-2 gap-5 p-3 justify-center items-center hidden-skill ${
+                activeSkill === "back-end" ? "" : "hidden "
               }`}
             >
               <img
@@ -206,8 +217,8 @@ export default function About() {
 
             {/*skill content - tools */}
             <div
-              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3  ${
-                activeSkill === "tools" ? "block" : "hidden"
+              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 hidden-skill ${
+                activeSkill === "tools" ? "" : "hidden"
               }`}
             >
               <img
@@ -252,7 +263,7 @@ export default function About() {
         </div>
       </div>
 
-      <button className="h-16 mx-auto text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      <button className="h-16 mx-auto text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
         Hire Me!
       </button>
     </Element>

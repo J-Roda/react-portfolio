@@ -1,14 +1,7 @@
-import {
-  BriefcaseIcon,
-  ChevronDoubleDownIcon,
-  ChevronDoubleUpIcon,
-  HomeIcon,
-  PhoneIcon,
-  UserIcon,
-} from "@heroicons/react/24/solid";
+import { ChevronDoubleUpIcon } from "@heroicons/react/24/solid";
 
 import logo from "../assets/update-color.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { classNames } from "../lib/utils.ts";
 import { animateScroll, Link } from "react-scroll";
 
@@ -16,25 +9,21 @@ export default function Header() {
   const [navigation, setNavigation] = useState([
     {
       name: "Home",
-      icon: <HomeIcon className="block size-8" />,
       href: "home",
       current: true,
     },
     {
       name: "About Me",
-      icon: <UserIcon className="block size-8" />,
       href: "about",
       current: false,
     },
     {
       name: "Projects",
-      icon: <BriefcaseIcon className="block size-8" />,
       href: "projects",
       current: false,
     },
     {
       name: "Contact",
-      icon: <PhoneIcon className="block size-8" />,
       href: "contact",
       current: false,
     },
@@ -44,7 +33,7 @@ export default function Header() {
     <header
       className={`${navigation.map((item) =>
         classNames(item.current ? "bg-transparent" : "bg-gray-800 text-white")
-      )} fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
+      )} fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:left-0  md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
     >
       {/* Mobile button*/}
       <button

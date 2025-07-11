@@ -97,6 +97,40 @@ body::-webkit-scrollbar-thumb {
   animation-direction: alternate;
 }
 
+.hidden-l {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.hidden-r {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(100%);
+  transition: all 1s;
+}
+
+.hidden-t {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(-100%);
+  transition: all 1s;
+}
+
+.hidden-skill {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(10%);
+  transition: all 0.8s;
+}
+
+.show-section {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
 @keyframes color-rotate {
   from {
     filter: hue-rotate(0deg);

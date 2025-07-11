@@ -5,9 +5,10 @@ import Home from "./components/Home";
 import useScrollObserver from "./hooks/useScrollObserver";
 
 function App() {
-  useScrollObserver(".hidden-l-transition");
-  useScrollObserver(".hidden-r-transition");
-  useScrollObserver(".hidden-t-transition");
+  useScrollObserver(".hidden-l");
+  useScrollObserver(".hidden-r");
+  useScrollObserver(".hidden-t");
+  useScrollObserver(".hidden-skill");
 
   return (
     <>
