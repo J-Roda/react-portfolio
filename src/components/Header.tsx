@@ -4,36 +4,18 @@ import logo from "../assets/update-color.png";
 import { useState } from "react";
 import { classNames } from "../lib/utils.ts";
 import { animateScroll, Link } from "react-scroll";
+import { NAVIGATION } from "../lib/constants.ts";
 
 export default function Header() {
-  const [navigation, setNavigation] = useState([
-    {
-      name: "Home",
-      href: "home",
-      current: true,
-    },
-    {
-      name: "About Me",
-      href: "about",
-      current: false,
-    },
-    {
-      name: "Projects",
-      href: "projects",
-      current: false,
-    },
-    {
-      name: "Contact",
-      href: "contact",
-      current: false,
-    },
-  ]);
+  const [navigation, setNavigation] = useState(NAVIGATION);
 
   return (
     <header
-      className={`${navigation.map((item) =>
-        classNames(item.current ? "bg-transparent" : "bg-gray-800 text-white")
-      )} fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:left-0  md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
+      className={`${
+        navigation[0].current
+          ? "bg-[rgba(0, 0, 0, 0.12)] text-gray-100"
+          : "bg-[rgba(0, 0, 0, 0.5)]"
+      } shadow[0 4px 30px rgba(0, 0, 0, 0.1)] backdrop-blur-sm fixed md:h-16 z-1 left-3 bottom-3 rounded-2xl md:rounded-none md:w-full md:left-0  md:top-0 flex items-center justify-center md:px-4 lg:px-8 lg:shadow-md`}
     >
       {/* Mobile button*/}
       <button
@@ -55,7 +37,7 @@ export default function Header() {
         </a>
       </div>
       <div className="hidden md:ml-6 md:block">
-        <div className="flex lg:space-x-4">
+        <div className="flex gap-4">
           {navigation.map((item) => (
             <Link
               to={item.href}

@@ -151,23 +151,23 @@ export default function About() {
                 alt="React Router Icon"
                 className="h-27 mx-auto"
               />
-              <div className="col-span-3 flex justify-center items-center gap-5 h-27">
+              <div className="col-span-3 grid grid-cols-3 justify-center items-center gap-5">
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
                   alt="Tailwind CSS Icon"
-                  className="h-27 mx-auto"
+                  className="lg:h-27 mx-auto"
                 />
 
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
                   alt="Bootstrap Icon"
-                  className="h-27 mx-auto"
+                  className="lg:h-27 mx-auto"
                 />
 
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
                   alt="Bootstrap Icon"
-                  className="h-27 mx-auto"
+                  className="lg:h-27 mx-auto"
                 />
               </div>
             </div>
@@ -217,7 +217,7 @@ export default function About() {
 
             {/*skill content - tools */}
             <div
-              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 hidden-skill ${
+              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 hidden-skill overflow-hidden ${
                 activeSkill === "tools" ? "" : "hidden"
               }`}
             >
@@ -251,13 +251,11 @@ export default function About() {
               />
 
               <img src={render} alt="Render Logo" className="h-27 mx-auto" />
-              <div className="col-span-3 ">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"
-                  alt="Vercel Icon"
-                  className="h-27 mx-auto"
-                />
-              </div>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"
+                alt="Vercel Icon"
+                className="h-27 mx-auto col-span-3"
+              />
             </div>
           </div>
         </div>
