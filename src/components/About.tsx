@@ -28,7 +28,7 @@ export default function About() {
         </h3>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-4 mx-auto xl:mx-30 2xl:mx-52  mb-5 p-5 shadow-lg bg-[#fafafa] rounded-lg ">
+      <div className="grid lg:grid-cols-2 gap-4 mx-auto xl:mx-30 2xl:mx-52  mb-5 p-5 shadow-lg bg-[#fafafa] rounded-lg">
         <div className="p-3 hidden-l">
           <h3 className="font-bold text-lg mb-3">Career Objectives</h3>
           <p className="text-lg">
@@ -56,12 +56,8 @@ export default function About() {
               at Advance World Solutions Inc. (Feb 2023 - Present)
             </li>
             <li>
-              <span className="font-bold">IT Staff</span> at Visayas State
-              University (Feb 2022 - June 2022)
-            </li>
-            <li>
-              <span className="font-bold">Web Developer</span> at Visayas State
-              University (Sept 2021 - Dec 2021)
+              <span className="font-bold">Web Developer (WordPress)</span> at
+              Visayas State University (Sept 2021 - June 2022)
             </li>
           </ul>
         </div>
@@ -112,7 +108,7 @@ export default function About() {
 
             {/*skill content - front-end */}
             <div
-              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 hidden-skill ${
+              className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-4 col-span-2 gap-5 p-3 hidden-skill ${
                 activeSkill === "front-end" ? "" : "hidden"
               }`}
             >
@@ -151,23 +147,29 @@ export default function About() {
                 alt="React Router Icon"
                 className="h-27 mx-auto"
               />
-              <div className="col-span-3 grid grid-cols-3 justify-center items-center gap-5">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                  alt="Tailwind CSS Icon"
-                  className="lg:h-27 mx-auto"
-                />
 
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
-                  alt="Bootstrap Icon"
-                  className="lg:h-27 mx-auto"
-                />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                alt="Tailwind CSS Icon"
+                className="h-27 mx-auto"
+              />
 
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
+                alt="Bootstrap Icon"
+                className="h-27 mx-auto"
+              />
+              <div className="col-span-4 grid grid-cols-2 justify-center items-center gap-5 h-27">
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
-                  alt="Bootstrap Icon"
-                  className="lg:h-27 mx-auto"
+                  alt="Vite Icon"
+                  className="h-27 mx-auto"
+                />
+
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                  alt="Next Icon"
+                  className="h-27  mx-auto"
                 />
               </div>
             </div>
@@ -250,12 +252,25 @@ export default function About() {
                 className="h-27 mx-auto"
               />
 
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+                alt="Playwright Icon"
+                className="h-27 mx-auto"
+              />
+              {/* <div className="col-span-3 grid grid-cols-2 justify-center items-center gap-5"> */}
               <img src={render} alt="Render Logo" className="h-27 mx-auto" />
               <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"
                 alt="Vercel Icon"
-                className="h-27 mx-auto col-span-3"
+                className="h-27 mx-auto"
               />
+
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg"
+                alt="Vercel Icon"
+                className="h-27 mx-auto"
+              />
+              {/* </div> */}
             </div>
           </div>
         </div>

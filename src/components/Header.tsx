@@ -2,7 +2,6 @@ import { ChevronDoubleUpIcon } from "@heroicons/react/24/solid";
 
 import logo from "../assets/update-color.png";
 import { useState } from "react";
-import { classNames } from "../lib/utils.ts";
 import { animateScroll, Link } from "react-scroll";
 import { NAVIGATION } from "../lib/constants.ts";
 
@@ -43,7 +42,6 @@ export default function Header() {
               to={item.href}
               spy={true}
               smooth={true}
-              offset={-70}
               duration={700}
               activeClass="text-white bg-[rgba(108,117,125,0.5)]"
               className="nav-link cursor-pointer"
