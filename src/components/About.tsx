@@ -3,18 +3,23 @@ import {
     CogIcon,
     WindowIcon,
 } from "@heroicons/react/24/solid";
-
-import render from "../assets/Render-logo.png";
-
 import { useState } from "react";
 import { Element } from "react-scroll";
+import skillsData from "../data/skills.json";
+import Skills from "./Skills";
+import IconImage from "./ImageLogo";
+import SkillContainer from "./SkillContainer";
 
+export type ActiveSkillType = "frontend" | "backend" | "tools";
+
+const gridColsFrontend = 3;
+const gridColsBackend = 2;
+const gridColsTools = 3;
 export default function About() {
-    const [activeSkill, setActiveSkill] = useState("front-end");
+    const [activeSkill, setActiveSkill] = useState<ActiveSkillType>("frontend");
 
-    function handleSkillClick(skill: string) {
+    function handleSkillClick(skill: ActiveSkillType) {
         setActiveSkill(skill);
-        console.log(`Active skill set: ${skill}`);
     }
 
     return (
@@ -22,7 +27,7 @@ export default function About() {
             name="about"
             className="bg-[#f8f9fa] 2xl:h-screen 2xl:py-0 pt-10 pb-20 flex flex-col items-center justify-center"
         >
-            <div className="block border-b-2 border-gray-300 2xl:w-1/3 mb-5">
+            <div className="block border-b-2 border-gray-300 2xl:w-2/3 mb-5">
                 <h3 className="text-4xl font-bold h-18 text-center">
                     About Me
                 </h3>
@@ -94,28 +99,28 @@ export default function About() {
                         <div className="col-span-2 flex justify-between items-center gap-2 lg:gap-4 flex-wrap">
                             <button
                                 disabled={
-                                    activeSkill == "front-end" ? true : false
+                                    activeSkill == "frontend" ? true : false
                                 }
-                                className={`flex justify-center items-center rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${activeSkill == "front-end" ? "cursor-not-allowed" : "cursor-pointer hover:bg-gray-200 transition-colors duration-300"} ${
-                                    activeSkill === "front-end"
+                                className={`flex justify-center items-center rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${activeSkill == "frontend" ? "cursor-not-allowed" : "cursor-pointer hover:bg-gray-200 transition-colors duration-300"} ${
+                                    activeSkill === "frontend"
                                         ? "bg-gray-400 text-white"
                                         : "bg-[#fafafa] "
                                 }`}
-                                onClick={() => handleSkillClick("front-end")}
+                                onClick={() => handleSkillClick("frontend")}
                             >
                                 <WindowIcon className="w-8 h-8" />
-                                <span>FRONT-END</span>
+                                <span>FRONTEND</span>
                             </button>
                             <button
                                 disabled={
-                                    activeSkill == "back-end" ? true : false
+                                    activeSkill == "backend" ? true : false
                                 }
-                                className={`flex justify-center items-center rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${activeSkill == "back-end" ? "cursor-not-allowed" : "cursor-pointer hover:bg-gray-200 transition-colors duration-300"} ${
-                                    activeSkill === "back-end"
+                                className={`flex justify-center items-center rounded-lg h-12 lg:w-40 mx-auto p-3 col-span-1 ${activeSkill == "backend" ? "cursor-not-allowed" : "cursor-pointer hover:bg-gray-200 transition-colors duration-300"} ${
+                                    activeSkill === "backend"
                                         ? "bg-gray-400 text-white"
                                         : "bg-[#fafafa]"
                                 }`}
-                                onClick={() => handleSkillClick("back-end")}
+                                onClick={() => handleSkillClick("backend")}
                             >
                                 <CircleStackIcon className="w-8 h-8" />
                                 <span>BACKEND</span>
@@ -134,158 +139,60 @@ export default function About() {
                             </button>
                         </div>
 
-                        {/*skill content - front-end */}
-                        <div
-                            className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3 ${
-                                activeSkill === "front-end" ? "block" : "hidden"
-                            }`}
+                        {/*skill content - frontend */}
+                        <SkillContainer
+                            isHidden={activeSkill === "frontend" ? true : false}
+                            gridCols={gridColsFrontend}
                         >
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                alt="HTML5 Icon"
-                                className="h-27 mx-auto"
+                            <Skills
+                                skills={skillsData.frontend}
+                                gridCols={gridColsFrontend}
                             />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                alt="CSS3 Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                alt="JavaScript Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-                                alt="TypeScript Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                                alt="React Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original-wordmark.svg"
-                                alt="React Router Icon"
-                                className="h-27 mx-auto"
-                            />
-                            <div className="col-span-3 flex justify-center items-center gap-5 h-27">
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                                    alt="Tailwind CSS Icon"
-                                    className="h-27 mx-auto"
+                            <div className="col-span-3 flex justify-center items-center gap-5 h-16 xl:h-27">
+                                <IconImage
+                                    name={skillsData.frontend.at(-2)!.name}
+                                    src={skillsData.frontend.at(-2)!.src}
                                 />
 
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
-                                    alt="Bootstrap Icon"
-                                    className="h-27 mx-auto"
+                                <IconImage
+                                    name={skillsData.frontend.at(-1)!.name}
+                                    src={skillsData.frontend.at(-1)!.src}
                                 />
                             </div>
-                        </div>
+                        </SkillContainer>
 
                         {/*skill content - backend */}
-                        <div
-                            className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-2 col-span-2 gap-5 p-3 justify-center items-center ${
-                                activeSkill === "back-end" ? "block" : "hidden"
-                            }`}
+                        <SkillContainer
+                            isHidden={activeSkill === "backend" ? true : false}
+                            gridCols={gridColsFrontend}
                         >
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
-                                alt="MongoDB Icon"
-                                className="h-27 mx-auto"
+                            <Skills
+                                skills={skillsData.backend}
+                                gridCols={gridColsBackend}
                             />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-                                alt="PostgreSQL Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
-                                alt="Express Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-                                alt="MySQL Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-                                alt="Node.js Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                                alt="Java Icon"
-                                className="h-27 mx-auto"
-                            />
-                        </div>
+                        </SkillContainer>
 
                         {/*skill content - tools */}
-                        <div
-                            className={`bg-[#fafafa] xl:mx-5 2xl:mx-0 rounded grid grid-cols-3 col-span-2 gap-5 p-3  ${
-                                activeSkill === "tools" ? "block" : "hidden"
-                            }`}
+                        <SkillContainer
+                            isHidden={activeSkill === "tools" ? true : false}
+                            gridCols={gridColsFrontend}
                         >
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
-                                alt="Git Icon"
-                                className="h-27 mx-auto"
+                            <Skills
+                                skills={skillsData.tools}
+                                gridCols={gridColsTools}
                             />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
-                                alt="GitHub Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original-wordmark.svg"
-                                alt="VSCode Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original-wordmark.svg"
-                                alt="Postman Icon"
-                                className="h-27 mx-auto"
-                            />
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eclipse/eclipse-original-wordmark.svg"
-                                alt="Eclipse Icon"
-                                className="h-27 mx-auto"
-                            />
-
-                            <img
-                                src={render}
-                                alt="Render Logo"
-                                className="h-27 mx-auto"
-                            />
-                            <div className="col-span-3 ">
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"
-                                    alt="Vercel Icon"
-                                    className="h-27 mx-auto"
+                            <div className="col-span-3 flex justify-center items-center gap-5 h-16 xl:h-27">
+                                <IconImage
+                                    name={skillsData.tools.at(-1)!.name}
+                                    src={skillsData.tools.at(-1)!.src}
                                 />
                             </div>
-                        </div>
+                        </SkillContainer>
                     </div>
                 </div>
             </div>
 
-            <button className="h-16 mx-auto text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 font-bold">
+            <button className="h-12  w-48 mx-auto text-center bg-blue-500 text-white rounded font-bold cursor-pointer hover:bg-blue-600 ">
                 Let’s Talk
             </button>
         </Element>
